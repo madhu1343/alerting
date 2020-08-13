@@ -9,8 +9,8 @@ pipeline {
 
             steps {
                 bat 'terraform init'
-                bat 'terraform plan -auto-approve'
-                bat 'terraform apply'
+                bat 'terraform plan'
+                bat 'terraform apply -auto-approve'
                 }
             }
         }
