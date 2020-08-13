@@ -56,5 +56,22 @@ threshold = 98
 action {
 action_group_id = "${azurerm_monitor_action_group.main.id}"
 }
+ criteria {
+    metric_namespace = "Microsoft.Storage/storageAccounts"
+    metric_name      = "Transactions"
+    aggregation      = "Total"
+    operator         = "GreaterThan"
+    threshold        = 50
+
+    dimension {
+      name     = "ApiName"
+      operator = "Include"
+      values   = ["*"]
+    }
+    }
+
+  action {
+    action_group_id = "${azurerm_monitor_action_group.main.id}"
+  }
 
   }
