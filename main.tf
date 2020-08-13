@@ -26,6 +26,12 @@ resource "azurerm_monitor_action_group" "main" {
   name                = "example-actiongroup"
   resource_group_name = azurerm_resource_group.main.name
   short_name          = "exampleact"
+  
+  email_receiver {
+    name                    = "mani"
+    email_address           = "madhavi2038@outlook.com"
+    use_common_alert_schema = true
+  }
 
   webhook_receiver {
     name        = "callmyapi"
@@ -37,7 +43,7 @@ resource "azurerm_monitor_metric_alert" "test" {
   name                = "test-metricalert"
   resource_group_name = azurerm_resource_group.main.name
   scopes              = [azurerm_storage_account.to_monitor.id]
-  description         = "Action will be triggered when Transactions count is greater than 50."
+  description         = "Action will be triggered when Availability  is greater than 98."
 
  
 criteria {
@@ -56,6 +62,14 @@ threshold = 98
 action {
 action_group_id = "${azurerm_monitor_action_group.main.id}"
 }
+  }
+  resource "azurerm_monitor_metric_alert" "test2" {
+  name                = "test2-metricalert"
+  resource_group_name = azurerm_resource_group.main.name
+  scopes              = [azurerm_storage_account.to_monitor.id]
+  description         = "Action will be triggered when Transactions count is greater than 50."
+
+ 
  criteria {
     metric_namespace = "Microsoft.Storage/storageAccounts"
     metric_name      = "Transactions"
