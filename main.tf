@@ -57,3 +57,16 @@ resource "azurerm_monitor_metric_alert" "example" {
     action_group_id = azurerm_monitor_action_group.main.id
   }
 }
+ criteria {
+    resource_id    = azurerm_storage_account.to_monitor.id
+    operation_name = "Microsoft.Storage/storageAccounts/write"
+    category       = "Recommendation"
+  }
+
+  action {
+    action_group_id = azurerm_monitor_action_group.main.id
+
+    webhook_properties = {
+      from = "terraform"
+    }
+  }
