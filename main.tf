@@ -33,8 +33,8 @@ resource "azurerm_monitor_action_group" "main" {
   }
 }
 
-resource "azurerm_monitor_metric_alert" "example" {
-  name                = "example-metricalert"
+resource "azurerm_monitor_metric_alert" "test" {
+  name                = "test-metricalert"
   resource_group_name = azurerm_resource_group.main.name
   scopes              = [azurerm_storage_account.to_monitor.id]
   description         = "Action will be triggered when Transactions count is greater than 50."
