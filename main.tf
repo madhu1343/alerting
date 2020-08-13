@@ -51,12 +51,12 @@ resource "azurerm_monitor_metric_alert" "example" {
       operator = "Include"
       values   = ["*"]
     }
-  }
+    }
 
   action {
     action_group_id = azurerm_monitor_action_group.main.id
   }
-}
+
  criteria {
     resource_id    = azurerm_storage_account.to_monitor.id
     operation_name = "Microsoft.Storage/storageAccounts/write"
@@ -69,4 +69,5 @@ resource "azurerm_monitor_metric_alert" "example" {
     webhook_properties = {
       from = "terraform"
     }
+  }
   }
