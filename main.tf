@@ -58,7 +58,7 @@ resource "azurerm_monitor_metric_alert" "test" {
   }
 
 criteria {
-metric_namespace = "Microsoft.Compute/virtualMachines"
+metric_namespace = "Microsoft.Storage/storageAccounts"
 metric_name = "Percentage CPU"
 aggregation = "Average"
 operator = "GreaterThan"
