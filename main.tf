@@ -59,10 +59,10 @@ resource "azurerm_monitor_metric_alert" "test" {
 
 criteria {
 metric_namespace = "Microsoft.Storage/storageAccounts"
-metric_name = "MemoryUsage"
+metric_name = "Availability"
 aggregation = "Average"
 operator = "GreaterThan"
-threshold = 1
+threshold = 98
 }
 
 action {
