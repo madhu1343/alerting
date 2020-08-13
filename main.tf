@@ -47,6 +47,11 @@ aggregation = "Average"
 operator = "GreaterThan"
 threshold = 98
 }
+  dimension {
+      name     = "ApiName"
+      operator = "Include"
+      values   = ["*"]
+    }
 
 action {
 action_group_id = "${azurerm_monitor_action_group.main.id}"
